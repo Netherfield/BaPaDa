@@ -12,9 +12,9 @@ Features
 
 Links
 =====
-.. _`To Do`: https://github.com/Netherfield/BaPaDa/blob/main/docs/TODO.md
-.. _`Project`: https://github.com/Netherfield/BaPaDa/blob/main/docs/project.md
-.. _`Commands`: https://github.com/Netherfield/BaPaDa/blob/main/docs/commands.md
+.. _`To Do`: https://github.com/Netherfield/BaPaDa/tree/main/docs/TODO.md
+.. _`Project`: https://github.com/Netherfield/BaPaDa/tree/main/docs/project.md
+.. _`Commands`: https://github.com/Netherfield/BaPaDa/tree/main/docs/commands.md
 
 .. |logo| image:: https://github.com/Netherfield/BaPaDa/blob/main/logo.png
     :alt: BaPaDa
