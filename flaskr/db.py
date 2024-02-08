@@ -60,7 +60,6 @@ def load_data_from_csv(table_name, csv_file_path):
     print("Dati CSV importati con successo")
 
 # test code
-
 db_name = "museo"
 create_db_connection()
 create_table_query = """
