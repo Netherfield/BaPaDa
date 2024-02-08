@@ -12,10 +12,7 @@ Features
 
 Links
 =====
-`To Do`
-`Project`
-`Commands`
-`Issues`
+`To Do`_ - `Project`_ - `Commands`_ - `Issues`_
 
 .. _`To Do`: https://github.com/Netherfield/BaPaDa/tree/main/docs/TODO.md
 .. _`Project`: https://github.com/Netherfield/BaPaDa/tree/main/docs/project.md
