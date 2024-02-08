@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TUTTI I QUADRI</title>
+</head>
+<body>
+{% for quadro in quadri %}
+<ul>
+    <li>
+        TITOLO: <a href="{{ url_for('quadro', id=quadro.id) }}">{{quadro.Quadro}}</a>   AUTORE: {{quadro.Autore}}   Anno: {{quadro.Anno}}
+     </li>
+</ul>
+{% endfor %}
+</body>
+</html>

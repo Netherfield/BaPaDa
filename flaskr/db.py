@@ -9,7 +9,7 @@ db_config = {
 }
 
 # SOSTITUIRE CON NOME DEL DATABASE
-db_name = None
+db_name = "museo"
 
 # CONNESSIONE AL SERVER
 def create_server_connection():
@@ -29,8 +29,11 @@ def create_database(name_db:str):
         connection.close()
 
 # CONNESSIONE AL DB
-def create_db_connection():
-    db_config["database"] = db_name
+def create_db_connection(name=None):
+    if name:
+        db_config["database"] = name
+    else:
+        db_config["database"] = db_name
     return mysql.connector.connect(**db_config)
 
 # ESECUZIONE QUERY
@@ -55,19 +58,27 @@ def load_data_from_csv(table_name, csv_file_path):
         next(file)  # Skip the header row
         csv_data = csv.reader(file)
         for row in csv_data:
-            cursor.execute(f"INSERT INTO {table_name} VALUES (%s,%s,%s);", row)
+            cursor.execute(f"INSERT INTO {table_name} (Quadro, Autore, Anno) VALUES (%s,%s,%s);", row)
     connection.commit()
     print("Dati CSV importati con successo")
 
 # test code
-db_name = "museo"
-create_db_connection()
-create_table_query = """
-CREATE TABLE quadri (
-    Quadro VARCHAR(255),
-    Autore VARCHAR(255),
-    Anno INT
-)
-"""
-# execute_query(create_table_query)
-load_data_from_csv("quadri", "test-db/sample_csv.csv")
+# kill = "DROP DATABASE museo"
+# if __name__ == '__main__':
+#     conn = create_server_connection()
+#     killer = conn.cursor()
+#     killer.execute(kill)
+#     create_server_connection()
+#     create_database("museo")
+#     create_db_connection()
+#     create_table_query = """
+#     CREATE TABLE quadri (
+#         id INT(32) AUTO_INCREMENT,
+#         Quadro VARCHAR(255),
+#         Autore VARCHAR(255),
+#         Anno INT,
+#         PRIMARY KEY(id)
+#     )
+#     """
+#     execute_query(create_table_query)
+#     load_data_from_csv("quadri", "test-db/sample_csv.csv")
