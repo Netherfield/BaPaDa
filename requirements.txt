@@ -1,0 +1,5 @@
+
+
+
+Flask              3.0.1
+mysql-connector    2.2.9
