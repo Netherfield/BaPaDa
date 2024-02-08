@@ -47,6 +47,7 @@ def execute_query(query, params=None):
     connection.close()
     return result
 
+# CARICARE DATI NEL CSV
 def load_data_from_csv(table_name, csv_file_path):
     connection = create_db_connection()
     cursor = connection.cursor()
