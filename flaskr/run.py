@@ -1,4 +1,5 @@
 from db_manager import *
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    manager()
+    app.run(debug=True, use_reloader=False)
