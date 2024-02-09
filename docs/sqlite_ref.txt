@@ -1,0 +1,4 @@
+Sqlite introduction
+
+download with:
+py -m pip install sqlite3
