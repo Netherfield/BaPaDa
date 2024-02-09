@@ -1,5 +1,5 @@
 |logo|
-
+|background|
 BaPaDa - Museum navigator App
 =============================
 Enjoy the many collections stored on our webapp
@@ -22,4 +22,8 @@ Links
 .. |logo| image:: https://github.com/Netherfield/BaPaDa/blob/main/logo.png
     :alt: BaPaDa
     :target: https://github.com/Netherfield/BaPaDa
+
+.. |background| image:: https://github.com/Netherfield/BaPaDa/blob/main/resources/bapada.png
+    :alt: bg
+    :align: middle
 
