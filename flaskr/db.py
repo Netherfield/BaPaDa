@@ -27,6 +27,7 @@ def create_database(name_db:str):
     finally:
         cursor.close()
         connection.close()
+    print("DB creato")
 
 # CONNESSIONE AL DB
 def create_db_connection(name=None):
@@ -50,6 +51,21 @@ def execute_query(query, params=None):
     connection.close()
     return result
 
+#CREAZIONE TABELLA
+def create_table(name):
+    create_table_query = f"""
+        CREATE TABLE {name} (
+            id INT(32) AUTO_INCREMENT,
+            Quadro VARCHAR(255),
+            Autore VARCHAR(255),
+            Anno INT,
+            Link VARCHAR(255),
+            PRIMARY KEY(id)
+        )
+        """
+    execute_query(create_table_query)
+    print("tabella creata")
+
 # CARICARE DATI NEL CSV
 def load_data_from_csv(table_name, csv_file_path):
     connection = create_db_connection()
@@ -58,16 +74,16 @@ def load_data_from_csv(table_name, csv_file_path):
         next(file)  # Skip the header row
         csv_data = csv.reader(file)
         for row in csv_data:
-            cursor.execute(f"INSERT INTO {table_name} (Quadro, Autore, Anno) VALUES (%s,%s,%s);", row)
+            cursor.execute(f"INSERT INTO {table_name} (Quadro, Autore, Anno, Link) VALUES (%s,%s,%s,%s);", row)
     connection.commit()
     print("Dati CSV importati con successo")
 
 # test code
 # kill = "DROP DATABASE museo"
 # if __name__ == '__main__':
-#     conn = create_server_connection()
-#     killer = conn.cursor()
-#     killer.execute(kill)
+    # conn = create_server_connection()
+    # killer = conn.cursor()
+    # killer.execute(kill)
 #     create_server_connection()
 #     create_database("museo")
 #     create_db_connection()
