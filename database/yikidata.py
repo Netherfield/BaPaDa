@@ -11,8 +11,9 @@ def attribute(att:str):
     r = requests.get(url, params = {'format': 'json', 'query': query})
     return r.json()
 
-
+"""
 SELECT ?title
 WHERE {
   ?title wd: wdt:Q3921662
 }
+"""
