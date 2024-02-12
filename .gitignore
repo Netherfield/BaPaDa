@@ -4,3 +4,4 @@ docs/*.pdf
 database/tmp/*.html
 database/tmp/*.txt
 **/.ideas
+**/cruft

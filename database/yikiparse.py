@@ -2,7 +2,7 @@
 import re
 import csv
 
-import wikinav
+import yikinav as yikinav
 
 
 
@@ -14,9 +14,9 @@ def wikiscrape() -> None:
     """
     museum_link = "https://commons.wikimedia.org/wiki/Category:Paintings_in_the_Mus%C3%A9e_d%27Orsay_by_artist"
     
-    museum_s = wikinav.get_museum(museum_link)
+    museum_s = yikinav.get_museum(museum_link)
     # dump authors
-    museum_authors:list[str] = wikinav.get_authors(museum_s)
+    museum_authors:list[str] = yikinav.get_authors(museum_s)
     with open("tmp/authordump.txt", "w", encoding='utf-8') as fp:
         for author, link in museum_authors:
             fp.write(author + "   " + link + "\n")
@@ -24,12 +24,16 @@ def wikiscrape() -> None:
     fp = open("test.csv", "w", encoding="utf-16", newline="")
     writer =csv.writer(fp)
     writer.writerow(["author","title","year","link"])
-
+    print("Starting parse")
     for author, author_page in museum_authors:
-        gallery = wikinav.author_navigator(author_page)
-        author_works:list[str] = wikinav.get_works(gallery)
+        gallery = yikinav.author_navigator(author_page)
+        author_works:list[str] = yikinav.get_works(gallery)
         for work_link in author_works:
-            info:list[str] = wikinav.work_extractor(work_link)
+            work_info:list[str] = yikinav.work_extractor(work_link)
+            print(work_info)
+            input()
+        break
+    print("finished")
 
 
 
