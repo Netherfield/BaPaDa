@@ -1,0 +1,49 @@
+Sqlite3 introduction
+
+Link utili:
+https://docs.python.org/3/library/sqlite3.html
+https://www.sqlite.org/index.html
+
+SQLite3
+
+Libreria che permette la manipolazione e archiviazione di dati in formato database.
+Nel nostro caso specifico lo useremo per creare il db a livello locale anche se il suo utilizzo
+può essere quello di libreria per accedere al db in maniera sicura ed efficiente, framework web
+(
+    Flask ha supporto nativo per sqlite 3
+
+import sqlite3
+from flask import g
+
+)
+
+                                                                                               
+Installazione:
+pip install sqlite3*
+
+Getting started:
+https://www.sqlite.org/quickstart.html
+
+*nota bene che quasta libreria usando pycharm è già presente e non richiede installazione
+
+Crea il db con il comando:
+
+conn = sqlite3.connect("mio_db.db")
+cursor = conn.cursor()
+
+ATTENZIONE!!
+
+Quando crei il DB ricordati di specificare dove vuoi che il tuo db durante la chiamata del metodo
+connect() altrimenti verràcreato nello spazio temporaneo per impiegarlo
+durante l'esecuzione dello script.
+
+Per salvare il DB dove vuoi te usa il comando:
+
+import os
+import sqlite3
+
+conn = sqlite3.connect(os.path.join('.', 'database', 'ex1.db'))
+cursor = conn.cursor()
+
+
+
