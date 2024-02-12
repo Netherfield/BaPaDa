@@ -5,16 +5,18 @@ many things to do, few things done
 
 
 Project (JB):
-- [ ] merge branches with origin to update docs etc
-- [ ] Set up scrum
-- [ ] Debrief
-- [ ] Setup project structure
+- [ ] set up automerge to update branches
+- [x] merge branches with origin to update docs etc
+- [x] Set up scrum
+- [x] Debrief
+- [x] Setup project structure
 - [ ] Fill requirements.txt, bs4, requests, etc
-- [ ] Implement CRUD functions: Create, Read, Update and Delete
+
 
 Database (JB):
-- [ ] Scrape w!k!ped!a for data
-- [ ] Find data sources
+- [ ] Create wikidata query
+- [x] Scrape w!k!ped!a for data
+- [x] Find data sources
 
 Sql (DM):
 - [ ] Starting from CSV create sql db (csv columns author,title,year,link)
@@ -25,17 +27,18 @@ Sql (DM):
 - [ ] Create python connections
 
 Flask (PM):
-- [ ] Create webserver
-- [ ] Create main menu
+- [x] Create webserver
+- [x] Create main menu
 - [ ] Create categories
 - [ ] Create 'show similar works'
+- [ ] Implement CRUD functions: Create, Read, Update and Delete
 
 Front (LA):
-- [ ] Create homepage
+- [x] Create homepage
 - [ ] Create Navbar con About Us, Works(by author, by date, all), Website creators(nearly gods)
 - [ ] Create work list page
 - [ ] Create style sheets
-- [ ] Say nice things about web development
+- [x] Say nice things about web development
 
 All:
 - [x] Have an existential crisis
