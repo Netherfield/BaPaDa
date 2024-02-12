@@ -41,25 +41,29 @@ def get_works(gallery:BeautifulSoup):
         author_works += ["https://commons.wikimedia.org/" + img]
     return author_works
 
-def wikidata_parser(wikidata_link:str):
+def wikidata_parser(work_codes:str):
+    work_data = yikidata.attributes(work_codes)
+    results:list[dict] = work_data['results']['bindings']
+    works_info = []
+    for result in results:
+        author = result['authorname']['value']
+        title = result['title']['value']
+        year = result['year']['value'][:4]
+        link = result['imgref']['value']
+        works_info += [[author, title, year, link]]
+    return works_info
     
 
-    wikidata_page = requests.get(wikidata_link)
-    wikidata_soup = BeautifulSoup(wikidata_page.content, "html.parser")
-
-    title = yikidata.attribute("title")
-    year = yikidata.attribute("year")
-    print(title, year)
-    return title, year
-    
-
-def work_extractor(work_link:str) -> list[str]:
+def code_extractor(work_link:str) -> list[str]:
     work_page = requests.get(work_link)
     work_soup = BeautifulSoup(work_page.content, "html.parser")
     auth_section = work_soup.find("td", {"id":"fileinfotpl_art_authority"})
     if auth_section is not None:
         wikidata_label = auth_section.find_next_sibling("td").find("span", {"typeof":"mw:File"})
-        wikidata_link = wikidata_label.a['href']
-        work_info = wikidata_parser(wikidata_link)
-    
-    return work_info
+        return wikidata_label.a['title'][9:]
+        
+def work_extractor(work_codes):
+    if work_codes:
+        return wikidata_parser(work_codes)
+    else:
+        raise Exception("Empty list")

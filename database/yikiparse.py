@@ -1,8 +1,6 @@
-
-import re
 import csv
 
-import yikinav as yikinav
+import yikinav
 
 
 
@@ -25,17 +23,26 @@ def wikiscrape() -> None:
     writer =csv.writer(fp)
     writer.writerow(["author","title","year","link"])
     print("Starting parse")
+    i = 0
     for author, author_page in museum_authors:
         gallery = yikinav.author_navigator(author_page)
-        author_works:list[str] = yikinav.get_works(gallery)
-        for work_link in author_works:
-            work_info:list[str] = yikinav.work_extractor(work_link)
-            print(work_info)
-            input()
-        break
+        if gallery:
+            author_works:list[str] = yikinav.get_works(gallery)
+            work_codes = []
+            for work_link in author_works:
+                code = yikinav.code_extractor(work_link)
+                if code is not None:
+                    work_codes += [code]
+            try:
+                works_info = yikinav.work_extractor(work_codes)
+                writer.writerows(works_info)
+            except:
+                print("Non codes for this author")
+        if i == 15:
+            break
+        i += 1
     print("finished")
-
-
+    fp.close()
 
 if __name__ == "__main__":
     wikiscrape()

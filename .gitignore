@@ -3,5 +3,6 @@ logo/*
 docs/*.pdf
 database/tmp
 **/.ideas
+**/.idea
 **/cruft
 **/__pycache__
