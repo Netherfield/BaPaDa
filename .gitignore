@@ -1,11 +1,6 @@
-
-flaskr/.idea/.name
-flaskr/.idea/csv-editor.xml
-flaskr/.idea/flaskr.iml
-flaskr/.idea/inspectionProfiles/profiles_settings.xml
-flaskr/.idea/inspectionProfiles/Project_Default.xml
-flaskr/.idea/misc.xml
-flaskr/.idea/vcs.xml
-*.xml
-*.pyc
-flaskr/test.py
+test-db/*
+logo/*
+docs/*.pdf
+database/tmp/*.html
+database/tmp/*.txt
+**/.ideas
