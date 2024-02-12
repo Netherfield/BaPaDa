@@ -36,7 +36,6 @@ def wikiscrape() -> None:
     print("finished")
 
 
-
 if __name__ == "__main__":
     wikiscrape()
 

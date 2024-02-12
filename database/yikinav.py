@@ -61,5 +61,4 @@ def work_extractor(work_link:str) -> list[str]:
         wikidata_label = auth_section.find_next_sibling("td").find("span", {"typeof":"mw:File"})
         wikidata_link = wikidata_label.a['href']
         work_info = wikidata_parser(wikidata_link)
-    
     return work_info
