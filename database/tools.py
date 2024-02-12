@@ -1,66 +1,84 @@
+import contextlib
 import os
 import sqlite3
-from sqlite3 import *
-from pathlib import Path
 
-def check_db_exists(db_name) -> bool:
-    try:
-        conn = sqlite3.connect(f"{db_name}.db")
-        conn.close()
-        return True
-    except FileNotFoundError:
-        print("DB doesn't exist")
+def check_db_exists(museo, opere):
+    filename = os.path.join(museo, f"{opere}.db")
+    if not os.path.exists(filename):
         return False
-
-def create_or_open_db(museo):
-    conn = None
-    museo_path = Path(__file__).resolve().parent / f"{museo}.db"
-    if check_db_exists:
-        conn = connection_exists(museo_path)
-    else:
-        conn = create_database(museo)
-def create_database(museo):
     try:
-        conn = sqlite3.connect(museo)
+        conn = sqlite3.connect(filename)
         conn.close()
-        print('db creato')
-    except sqlite3.Error as e:
-        if 'no such table' in str(e):
-            return False
-        raise
-    else:
         return True
+    except sqlite3.OperationalError as e:
+        if "not found" in str(e):
+            return False
+        else:
+            raise
 
-def connection_exists(museo) -> sqlite3.Connection:
+def create_or_open_db(opere, db_folder="Museo"):
+    filename = os.path.join(db_folder, opere)
+    if not os.path.exists(filename):
+        try:
+            conn = sqlite3.connect(f"{filename}")
+            print(f"Created new database {opere}.")
+        except Exception as e:
+            print(f"Unable to create database '{opere}' due to:", str(e))
+            return False
+    else:
+        try:
+            conn = sqlite3.connect(
+                filename)  # controllare perché mi dice che è un Unexpected argument per il check_last_error
+            print(f"Opened existing database {opere}.")
+        except Exception as e:
+            print(f"Unable to open database '{opere}', reason:", str(e))
+            return False
+    contextlib.closing(opere)
+    return conn
+
+
+def connection_exists(opere):
     conn = None
     try:
-        if os.path.isfile(f"{museo}.db"):
-            conn = sqlite3.connect(f"{museo}.db", check_same_thread=False)
-            cursor = conn.cursor()
-    except FileNotFoundError as err:
-        print(f"Errore: Database '{museo}' non trovato.")
-        print(err)
-    except Exception as err:
-        print(f"Errore imprevisto durante l'apertura del database '{museo}'. Dettagli: {err}")
+        conn = create_or_open_db(opere)
+        cursor = conn.cursor()
+        cursor.execute("PRAGMA table info(opere);").fetchone()
+        conn.close()
+        return True
+    except sqlite3.OperationalError as e:
+        if "no such table" in str(e):
+            return False
+        else:
+            raise
     finally:
         if conn is not None:
             conn.close()
+
+
+def create_db_conn(opere, db_folder="museo"):
+    if connection_exists(opere):
+        conn = opendb(opere)
+    else:
+        conn = createdb(opere, db_folder)
+
     return conn
 
-# def create_or_open_db(museo):
-#     conn = None
-#     museo_path = Path(__file__).resolve().parent / f"{museo}.db"
-#     if connection_exists(museo):
-#         conn = connect()
-#     conn = sqlite3.connect(museo)
+
+def opendb(opere):
+    try:
+        conn = create_or_open_db(opere)
+    except Exception as e:
+        print(f"Can't connect to db '{e.__str__()}'. Check if file exist.")
+        return None
+    else:
+        return conn
 
 
-def create_tables():
-    conn = connect(os.path.join(os.path.expanduser("~"), "Desktop", "museo.db"))
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS Opere(
+def createdb(opere, db_folder="museo"):
+    conn = create_or_open_db(opere, db_folder)
+    if conn is not None:
+        cursor = conn.cursor()
+        cursor.execute("""CREATE TABLE IF NOT EXISTS Opere(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             author_n TEXT,
             title TEXT,
@@ -68,27 +86,6 @@ def create_tables():
             link TEXT
         );
     """)
-
-    conn.commit()
-    conn.close()
-
-def load_data(opere):
-    conn = connect(os.path.join(os.path.expanduser("~"), "Desktop", "opere.db"))
-    cursor = conn.cursor()
-
-    for opera in opere:
-        cursor.execute("INSERT INTO opere VALUES (NULL, %s, %s, %s, %s)",
-                       (opera["author_n"],
-                        opere["title"],
-                        opere["anno"],
-                        opere["link"]))
-
-    conn.commit()
-    conn.close()
-
-
-if __name__ == "__main__":
-    create_tables()
-    opere = []
-    load_data(opere)
-
+        conn.commit()
+        conn.close()
+    return conn
