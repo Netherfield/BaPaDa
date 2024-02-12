@@ -3,6 +3,34 @@ import sqlite3
 from sqlite3 import *
 
 
+"""
+struttura:
+
+def create or open():
+    if connectionexist:
+        opendb
+    else:
+        createdb
+
+opendb:
+    connection = sql...
+    return connection
+
+createdb:
+    connection = sql
+    db = sql.create..
+    return connection
+
+connectionexists(db_name):
+    interroga il server sql se esiste db_name
+    yes:
+        return true
+    no:
+        return false
+
+"""
+
+
 def _create_database(museo):
     try:
         conn = sqlite3.connect(museo)
