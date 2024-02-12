@@ -1,6 +1,8 @@
 test-db/*
 logo/*
 docs/*.pdf
-database/tmp/*.html
-database/tmp/*.txt
+database/tmp
 **/.ideas
+**/.idea
+**/cruft
+**/__pycache__
