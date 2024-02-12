@@ -4,6 +4,8 @@ BaPaDa - Museum navigator App
 =============================
 Enjoy the many collections stored on our webapp
 
+Group 1!
+
 Features
 ========
 * Gallery navigator

@@ -1,5 +1,6 @@
 test-db/*
 logo/*
 docs/*.pdf
-database/*.html
+database/tmp/*.html
+database/tmp/*.txt
 **/.ideas
