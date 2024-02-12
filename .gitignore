@@ -5,3 +5,4 @@ database/tmp/*.html
 database/tmp/*.txt
 **/.ideas
 **/cruft
+**/__pycache__
