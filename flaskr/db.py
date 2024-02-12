@@ -29,6 +29,7 @@ def create_database(name_db:str):
         connection.close()
     print("DB creato")
 
+
 # CONNESSIONE AL DB
 def create_db_connection(name=None):
     if name:

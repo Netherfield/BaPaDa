@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import *
 import db
 
 
@@ -45,5 +45,32 @@ def quadro(id):
     return render_template("__ONE__QUADRO__.html", data=data[0])
 
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+#PAGINA ADMIN PER CRUD
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    conn = db.create_db_connection()
+    cursor = conn.cursor()
+
+    if request.method == 'POST':
+        id = request.form['id']
+        name = request.form['name']
+        author = request.form['author']
+        year = request.form['year']
+        link = request.form['link']
+        action = request.form['action']
+
+        if action == 'Aggiungi':
+            cursor.execute('SELECT * FROM quadri WHERE Quadro = %s AND Autore = %s', (name, author))
+            existing_quadro = cursor.fetchone()
+            if existing_quadro is None:
+                cursor.execute('INSERT INTO quadri (Quadro, Autore, Anno, Link) VALUES (%s, %s, %s, %s)',
+                               (name, author, year, link))
+                conn.commit()
+            else:
+                print("Il quadro esiste già nel database.")
+        elif action == 'Rimuovi':
+            cursor.execute('DELETE FROM quadri WHERE id=%s', (id,))
+        conn.commit()
+        return redirect(url_for('admin'))
+    return render_template('__ADMIN__.html')
+

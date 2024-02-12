@@ -24,3 +24,5 @@ def manager(option=None):
         time.sleep(1)
         print("IT'S GONNA WAYYY, YES???")
         time.sleep(2)
+
+manager("ma")
