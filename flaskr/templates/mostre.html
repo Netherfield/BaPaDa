@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Mostre | Museo della Mia Città</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+</head>
+<header id="main-header">
+    <nav id="navbar">
+        <ul>
+         <li><a class="nav-link" href="/">Home</a></li>
+                <li><a class="nav-link" href="/quadro/all">Mostre</a></li>
+                <li><a class="nav-link" href="/quadro/all">Informazioni</a></li>
+                <li><a class="nav-link" href="/contatti">Contatti</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+   
+    <main>
+        <h2>Le nostre mostre</h2>
+        <p>Scopri le mostre attualmente in corso al nostro museo. Ogni mostra offre un'esperienza unica e coinvolgente.</p>
+    </main>
+
+    <!--GESTISCE "QUADRI" IN BASE SE IL RISULTATO == 1 OPPURE >= 1-->
+{% if quadri|length == 1 %}
+TITOLO: <a href="{{ url_for('quadro', id=quadri[0].id) }}">{{quadri[0].Title}}</a> AUTORE: {{quadri[0].Author}} ANNO: {{quadri[0].Year}} LINK: {{quadri[0].Link}}
+{% else %}
+    {% for qu in quadri %}
+    <ul>
+        <li>
+            TITOLO: <a href="{{ url_for('quadro', id=qu.id) }}">{{qu.Title}}</a>   AUTORE: {{qu.Author}}   ANNO: {{qu.Year}} LINK: {{qu.Link}}
+         </li>
+    </ul>
+    {% endfor %}
+{% endif %}
+
+<!--PULSANTE MENU A DISCESA-->
+<div class="dropdown">
+  <button class="dropbtn">Menu</button>
+  <div class="dropdown-content">
+      <a href="/quadro/all">Tutti</a>
+      {% for au in autori %}
+        <a href="{{url_for('show_all', author=au.Author)}}">{{au.Author}}</a>
+      {% endfor %}
+  </div>
+</div>
+</body>
+</html>
