@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Contatti | Museo della Mia Città</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <header id="main-header">
     <nav id="navbar">
         <ul>
-         <li><a class="nav-link" href="/">Home</a></li>
-                <li><a class="nav-link" href="/quadro/all">Mostre</a></li>
-                <li><a class="nav-link" href="/quadro/all">Informazioni</a></li>
-                <li><a class="nav-link" href="/contatti">Contatti</a></li>
+            <li><a class="nav-link" href="/home">Home</a></li>
+            <li><a class="nav-link" href="/quadro/all">Mostre</a></li>
+            <li><a class="nav-link" href="/informazioni">Informazioni</a></li>
+            <li><a class="nav-link" href="/contatti">Contatti</a></li>
         </ul>
     </nav>
 </header>
 <body>
-    <main>
-        <h2>Contatti</h2>
-        <p>Per informazioni aggiuntive, contattateci:</p>
-        <p>Indirizzo: Via del Museo, 123 - Città</p>
-        <p>Telefono: 0123456789</p>
-        <p>Email: info@museo.it</p>
+    <main class="mainaz">
+        <br>
+        <h2>Contattaci tramite questo modulo</h2>
+        
+        <form action="/submit_form" method="post">
+            <label for="name">Nome:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="message">Messaggio:</label><br>
+            <textarea id="message" name="message"></textarea><br>
+            <input type="submit" value="Invia">
+        </form>
+        <br>
     </main>
+    <footer>
+        <section id="contact">
+            <h2>Contatti</h2>
+            <p>Per informazioni aggiuntive, contattateci:</p>
+            <p>Indirizzo: Via del Museo, 123 - Città</p>
+            <p>Telefono: 0123456789</p>
+            <p>Email: info@museo.it</p>
+            <p>&copy; 2024 Museo della Mia Città</p>
+        </section>
+    </footer>
 </body>
 </html>

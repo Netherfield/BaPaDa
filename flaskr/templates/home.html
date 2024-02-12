@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web App Museo</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 
 <body>
@@ -13,47 +13,67 @@
         
         <nav id="navbar">
             <ul>
-                <li><a class="nav-link" href="/">Home</a></li>
+                <li><a class="nav-link" href="/home">Home</a></li>
                 <li><a class="nav-link" href="/quadro/all">Mostre</a></li>
-                <li><a class="nav-link" href="/quadro/all">Informazioni</a></li>
+                <li><a class="nav-link" href="/informazioni">Informazioni</a></li>
                 <li><a class="nav-link" href="/contatti">Contatti</a></li>
             </ul>
         </nav>
     </header>
 
 <main>
-    <section id="home">
-        <h2>Benvenuti al Museo della Mia Città</h2>
-        <p>Scoprite la storia e l'arte della nostra città attraverso le nostre mostre e collezioni.</p>
+    <section id="mission">
+        <h2>Visualizza le nostre opere</h2>
+        <p><a href="/quadro/all">Clicca qui</a> per visualizzare le nostre opere</p>
     </section>
-
-    <section id="exhibitions">
-        <h2>Mostre Attuali</h2>
-        <ul>
-            <li>
-                <h3>Titolo Mostra 1</h3>
-                <a href="http://127.0.0.1:5000/quadro/all"><h3>VEDI TUTTI I QUADRI</h3></a>
-            </li>
-        </ul>
+    
+    <section id="visiting">
+        <h2>Orari di apertura</h2>
+        <p>Siamo aperti dal martedì al domenica, dalle 10:00 alle 18:00. Siamo chiusi il lunedì.</p>
     </section>
-
-    <section id="about">
-        <h2>Informazioni sul Museo</h2>
-        <p>Il Museo della Mia Città è un luogo dedicato alla conservazione e alla promozione del patrimonio culturale della nostra comunità.</p>
+    
+    <section id="tickets">
+        <h2>Biglietti</h2>
+        <p>I biglietti per l'ingresso generale sono disponibili alla porta. Offriamo sconti per studenti, anziani e gruppi. I bambini sotto i 12 anni entrano gratis.</p>
     </section>
+    
+    <section id="location">
+        <h2>Dove siamo</h2>
+        <p>Siamo situati nel cuore della città, facilmente raggiungibili con i mezzi pubblici. C'è un parcheggio disponibile per i visitatori che arrivano in auto.</p>
+    </section>
+    <section id="volunteer">
+        <h2>Diventa un volontario</h2>
+        <p>Sei appassionato di storia e cultura? Unisciti al nostro team di volontari! Offriamo diverse opportunità per contribuire alla nostra missione e arricchire la tua esperienza culturale.</p>
+    </section>
+    
+    <section id="donate">
+        <h2>Donazioni</h2>
+        <p>Il tuo sostegno è fondamentale per la nostra missione di conservazione e educazione. Scopri come puoi contribuire con una donazione o diventando un membro del museo.</p>
+    </section>
+    
+    <section id="press">
+        <h2>Comunicati stampa</h2>
+        <p>Visita la nostra sezione dedicata alla stampa per rimanere aggiornato sulle ultime notizie e gli eventi del museo.</p>
+    </section>
+    
+    <section id="education">
+        <h2>Programmi educativi</h2>
+        <p>Offriamo una varietà di programmi educativi per studenti di tutte le età. Scopri le nostre lezioni, workshop e visite guidate per le scuole.</p>
+    </section>    
+    
+</main>
 
+<footer>
     <section id="contact">
         <h2>Contatti</h2>
         <p>Per informazioni aggiuntive, contattateci:</p>
         <p>Indirizzo: Via del Museo, 123 - Città</p>
         <p>Telefono: 0123456789</p>
         <p>Email: info@museo.it</p>
+        <p>&copy; 2024 Museo della Mia Città</p>
     </section>
-</main>
-
-<footer>
-    <p>&copy; 2024 Museo della Mia Città</p>
 </footer>
+
 
 </body>
 </html>
