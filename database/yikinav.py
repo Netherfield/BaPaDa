@@ -46,11 +46,9 @@ def wikidata_parser(wikidata_link:str):
 
     wikidata_page = requests.get(wikidata_link)
     wikidata_soup = BeautifulSoup(wikidata_page.content, "html.parser")
-    # tite is the header h1
-    title = yikidata.title(wikidata_soup)
-    # years appear in the inception section under a certain class
-    # we use them all
-    year = yikidata.year(wikidata_soup)
+
+    title = yikidata.attribute("title")
+    year = yikidata.attribute("year")
     print(title, year)
     return title, year
     

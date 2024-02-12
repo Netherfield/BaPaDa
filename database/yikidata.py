@@ -1,21 +1,18 @@
 import requests
 
-url = 'https://query.wikidata.org/sparql'
-query = '''
-SELECT ?item ?itemLabel ?linkcount WHERE {
-    ?item wdt:P31/wdt:P279* wd:Q35666 .
-    ?item wikibase:sitelinks ?linkcount .
-FILTER (?linkcount >= 1) .
-SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en" . }
+wikidata_codes = {
+    "year" : "P571"
 }
-GROUP BY ?item ?itemLabel ?linkcount
-ORDER BY DESC(?linkcount)
-'''
-r = requests.get(url, params = {'format': 'json', 'query': query})
-data = r.json()
+
+def attribute(att:str):
+    code = wikidata_codes[att]
+    url = "https://query.wikidata.org/sparql"
+    query = "SELECT ..."
+    r = requests.get(url, params = {'format': 'json', 'query': query})
+    return r.json()
 
 
-def title():
-    ...
-def year():
-    ...
+SELECT ?title
+WHERE {
+  ?title wd: wdt:Q3921662
+}
