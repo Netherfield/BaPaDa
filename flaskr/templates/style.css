@@ -1,0 +1,31 @@
+#main-header {
+    background-color: gray;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+}
+
+#navbar ul {
+    display: flex;
+    justify-content:space-evenly;
+    width: 100%;
+    list-style-type: none;
+    font-size: 20px;
+    background-color: #918a8a; 
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: red;
+}
