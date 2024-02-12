@@ -5,6 +5,7 @@ many things to do, few things done
 
 
 Project (JB):
+- [ ] set up main script: scrape->sql->flask->open browser
 - [ ] set up automerge to update branches
 - [x] merge branches with origin to update docs etc
 - [x] Set up scrum
@@ -14,7 +15,7 @@ Project (JB):
 
 
 Database (JB):
-- [ ] Create wikidata query
+- [x] Create wikidata query
 - [x] Scrape w!k!ped!a for data
 - [x] Find data sources
 
