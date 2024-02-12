@@ -57,9 +57,9 @@ def create_table(name):
     create_table_query = f"""
         CREATE TABLE {name} (
             id INT(32) AUTO_INCREMENT,
-            Quadro VARCHAR(255),
-            Autore VARCHAR(255),
-            Anno INT,
+            Title VARCHAR(255),
+            Author VARCHAR(255),
+            Year INT,
             Link VARCHAR(255),
             PRIMARY KEY(id)
         )
@@ -75,7 +75,7 @@ def load_data_from_csv(table_name, csv_file_path):
         next(file)  # Skip the header row
         csv_data = csv.reader(file)
         for row in csv_data:
-            cursor.execute(f"INSERT INTO {table_name} (Quadro, Autore, Anno, Link) VALUES (%s,%s,%s,%s);", row)
+            cursor.execute(f"INSERT INTO {table_name} (Title, Author, Year, Link) VALUES (%s,%s,%s,%s);", row)
     connection.commit()
     print("Dati CSV importati con successo")
 
@@ -91,9 +91,9 @@ def load_data_from_csv(table_name, csv_file_path):
 #     create_table_query = """
 #     CREATE TABLE quadri (
 #         id INT(32) AUTO_INCREMENT,
-#         Quadro VARCHAR(255),
-#         Autore VARCHAR(255),
-#         Anno INT,
+#         Title VARCHAR(255),
+#         Author VARCHAR(255),
+#         Year INT,
 #         PRIMARY KEY(id)
 #     )
 #     """

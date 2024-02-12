@@ -1,0 +1,64 @@
+#main-header {
+    background-color: gray;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+}
+
+#navbar ul {
+    display: flex;
+    justify-content:space-evenly;
+    width: 100%;
+    list-style-type: none;
+    font-size: 20px;
+    background-color: #918a8a; 
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+.dropbtn {
+  padding: 30px 60px;  /* Modifica questi valori per cambiare la grandezza del pulsante */
+  font-size: 16px;  /* Modifica questo valore per cambiare la dimensione del testo del pulsante */
+}
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 100px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
