@@ -4,8 +4,8 @@ many things to do, few things done
 
 
 
-
 Project (JB):
+- [ ] merge branches with origin to update docs etc
 - [ ] Set up scrum
 - [ ] Debrief
 - [ ] Setup project structure
@@ -15,14 +15,14 @@ Project (JB):
 Database (JB):
 - [ ] Scrape w!k!ped!a for data
 - [ ] Find data sources
-- [ ] Create 'db'
-- [ ] Create tables
-- [ ] Fill with test data
-- [ ] Create python connections
 
 Sql (DM):
 - [ ] Starting from CSV create sql db (csv columns author,title,year,link)
 - [ ] Write py script to automate
+- [ ] Create 'db'
+- [ ] Create tables
+- [ ] Fill with test data
+- [ ] Create python connections
 
 Flask (PM):
 - [ ] Create webserver
