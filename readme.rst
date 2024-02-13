@@ -11,7 +11,7 @@ Instructions
 ============
 start with the command:
 
-.. code-block:: console
+.. code-block::
     py bin/bapada
 
 
