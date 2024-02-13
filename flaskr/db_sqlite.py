@@ -26,6 +26,7 @@ def create_db_connection(db_name, db_dir):
     else:
         try:
             connection = sqlite3.connect(path_db)
+            connection.row_factory = sqlite3.Row
         except Exception as e:
             print(e)
     return connection
@@ -58,15 +59,15 @@ def load_data_from_csv(connection, table_name, csv_file_path):
     print("Dati CSV importati con successo")
 
 # ESECUZIONE QUERY
-def execute_query(query, params=None):
-    connection = create_db_connection()
+def execute_query(connection, query, params=None):
     cursor = connection.cursor()
+    result = None
     if params:
         cursor.execute(query, params)
         connection.commit()
     else:
         cursor.execute(query)
-    result = cursor.fetchall()
+        result = cursor.fetchall()
     cursor.close()
     connection.close()
     return result

@@ -7,6 +7,13 @@ Enjoy the many collections stored on our webapp
 
 Group 1!
 
+Instructions
+============
+start with the command:
+.. code-block:: shell
+    py bin/bapada
+
+
 Features
 ========
 * Gallery navigator
