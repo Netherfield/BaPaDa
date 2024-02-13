@@ -18,6 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import os
+import time
 import subprocess
 import argparse
 
@@ -69,12 +70,16 @@ def main():
     # launch flask
     try:
         # os.system("py flaskr\\run.py")
-        r = subprocess.Popen(["py", "flaskr\\run.py"])
+        r = subprocess.Popen(["py", "flaskr\\run.py"], creationflags=subprocess.CREATE_NEW_CONSOLE)
         print("Process returned code ", r)
     except:
         ...
     # wait
+    time.sleep(5)
     # launch chrome/ff/edge
+    import webbrowser
+    url = "http:://127.0.0.1:5000"
+    webbrowser.open(url, new=0, autoraise=True)
     
     clean_env()
     
