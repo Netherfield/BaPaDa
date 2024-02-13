@@ -1,14 +1,23 @@
 from flask_manager import *
 import time
 
-def manager(option=None):
-    if option:
+def manager(sql=False):
+    if sql:
         print("GG WP")
     else:
         print("WELCOME TO BADAPA Script")
-        path = input("inserisci path del .csv: ")
-        nome_db = input("inserisci Nome DB: ")
-        table_name = input("inserisci Nome Tabella: ")
+
+        # path = input("inserisci path del .csv: ")
+        path = "database/data/museum.csv"
+
+        # nome_db = input("inserisci Nome DB: ")
+        # TODO: correct variables in flask files to be generic
+        nome_db = "museo"
+
+        # table_name = input("inserisci Nome Tabella: ")
+        # TODO: correct variables in flask files to be generic
+        table_name = "quadri"
+
         db.create_server_connection()
         db.create_database(nome_db)
         db.create_db_connection()
