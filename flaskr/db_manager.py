@@ -1,37 +1,35 @@
 from flask_manager import *
-import time
 
-def manager(sql=False):
-    if sql:
-        print("GG WP")
+NOME_DB = "museo"
+TABLE_NAME = "quadri"
+DEF = '../database/test.csv'
+
+def manager():
+    print("WELCOME TO BADAPA Script")
+    log = input("Hai già un DB? (Y/N): ")
+    if log.lower() == "n":
+        path = input("inserisci path del .csv: (DEF -> '../database/test.csv') ")
+        if path.lower() == "def":
+            path = DEF
+            db.create_server_connection()
+            try:
+                db.create_database(NOME_DB)
+            except Exception as exc:
+                print(f"{exc}")
+            db.create_db_connection()
+            try:
+                db.create_table(TABLE_NAME)
+            except Exception as exc:
+                print(f"{exc}")
+            try:
+                db.load_data_from_csv(TABLE_NAME, path)
+                print("IT'S GONNA WAY?? YESS?!?")
+            except Exception as exc:
+                print(f"{exc}")
     else:
-        print("WELCOME TO BADAPA Script")
+        print("Perchè mi hai runnato allora? BAH!")
 
-        # path = input("inserisci path del .csv: ")
-        path = "database/data/museum.csv"
+manager()
 
-        # nome_db = input("inserisci Nome DB: ")
-        # TODO: correct variables in flask files to be generic
-        nome_db = "museo"
 
-        # table_name = input("inserisci Nome Tabella: ")
-        # TODO: correct variables in flask files to be generic
-        table_name = "quadri"
 
-        db.create_server_connection()
-        db.create_database(nome_db)
-        db.create_db_connection()
-        db.create_table(table_name)
-        db.load_data_from_csv(table_name, path)
-        print("CREAZIONE DB IN CORSO...")
-        time.sleep(1)
-        print("INTERROGANDO AI SU COME FARE...")
-        time.sleep(1)
-        print("ATTESA RISPOSTA...")
-        time.sleep(1)
-        print("BRB, HO DA FARE, ASPETTA!!!")
-        time.sleep(1)
-        print("IT'S GONNA WAYYY, YES???")
-        time.sleep(2)
-
-manager("ma")

@@ -3,26 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Informazioni | Museo della Mia Città</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
+
 </head>
 <header id="main-header">
     <nav id="navbar">
         <ul>
-         <li><a class="nav-link" href="/">Home</a></li>
-                <li><a class="nav-link" href="/quadro/all">Mostre</a></li>
-                <li><a class="nav-link" href="/quadro/all">Informazioni</a></li>
-                <li><a class="nav-link" href="/contatti">Contatti</a></li>
+            <li><a class="nav-link" href="/home">Home</a></li>
+            <li><a class="nav-link" href="/quadro/all">Mostre</a></li>
+            <li><a class="nav-link" href="/informazioni">Informazioni</a></li>
+            <li><a class="nav-link" href="/contatti">Contatti</a></li>
         </ul>
     </nav>
 </header>
 <body>
-<h1>quadro: {{data.Title}}</h1>
-<h1>autore: {{data.Author}}</h1>
-<h1>anno: {{data.Year}}</h1>
-<h1><a href="{{data.Link}}">CLICCA QUI PER VISUALIZZARE</a></h1>
     <main>
+        <div class="info">
         <h2>Informazioni sul Museo</h2>
         <p>Il Museo della Mia Città è un luogo dedicato alla conservazione e alla promozione del patrimonio culturale della nostra comunità. Scopri di più su di noi.</p>
+        </div>
+        <div class="info">
+        <h3>La nostra storia</h3>
+        <p>Fondato nel 1901, il Museo della Mia Città ha una lunga storia di conservazione del patrimonio culturale locale. Da modesti inizi, il museo è cresciuto fino a diventare un punto di riferimento importante per la città.</p>
+        </div>
+        <div class="info">
+        <h3>Collezioni</h3>
+        <p>Le nostre collezioni spaziano dall'arte antica alla contemporanea, con un particolare focus sulla storia locale. Ogni pezzo racconta una storia unica sulla nostra comunità e sul suo sviluppo nel corso dei secoli.</p>
+        </div>
+        <div class="info">
+        <h3>Visite guidate</h3>
+        <p>Offriamo visite guidate giornaliere condotte da esperti che possono fornire approfondimenti unici sulle nostre collezioni. Le visite guidate sono un ottimo modo per imparare di più sul patrimonio culturale della nostra città.</p>
+        </div>
+        <div class="info">
+        <h3>Eventi speciali</h3>
+        <p>Oltre alle nostre esposizioni permanenti, ospitiamo regolarmente eventi speciali e mostre temporanee. Controlla il nostro calendario degli eventi per non perdere nulla!</p>
+        </div>
     </main>
 </body>
+
+<br>
+<footer>
+    <section id="contact">
+        <h2>Contatti</h2>
+        <p>Per informazioni aggiuntive, contattateci:</p>
+        <p>Indirizzo: Via del Museo, 123 - Città</p>
+        <p>Telefono: 0123456789</p>
+        <p>Email: info@museo.it</p>
+        <p>&copy; 2024 Museo della Mia Città</p>
+    </section>
+</footer>
 </html>
