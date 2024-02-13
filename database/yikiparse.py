@@ -20,7 +20,7 @@ def wikiscrape() -> None:
         for author, link in museum_authors:
             fp.write(author + "   " + link + "\n")
         
-    fp = open("data/museum.csv", "w", encoding="utf-16", newline="")
+    fp = open("data/museum2.csv", "w", encoding="utf-16", newline="")
     print("Starting csv compilation")
     
     writer =csv.writer(fp)
@@ -47,8 +47,8 @@ def wikiscrape() -> None:
                 writer.writerows(works_info)
             except Exception as e:
                 print(e)
-                print("Non codes for this author")
-        if i == 100:
+                print("No codes for this author")
+        if i == 2:
             break
         i += 1
     print("csv created at: database/data/museum.csv")
