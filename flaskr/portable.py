@@ -71,15 +71,13 @@ def create_table(name):
 def load_data_from_csv(table_name, csv_file_path):
     connection = create_db_connection()
     cursor = connection.cursor()
-    with open(csv_file_path, 'r', encoding='utf-16') as file:
+    with open(csv_file_path, 'r') as file:
         next(file)  # Skip the header row
         csv_data = csv.reader(file)
         for row in csv_data:
-            cursor.execute(f"INSERT INTO {table_name} (Author, Title, Year, Link) VALUES (%s,%s,%s,%s);", row)
+            cursor.execute(f"INSERT INTO {table_name} (Title, Author, Year, Link) VALUES (%s,%s,%s,%s);", row)
     connection.commit()
     print("Dati CSV importati con successo")
-
-# load_data_from_csv("quadri", "../database/test.csv")
 
 # test code
 # kill = "DROP DATABASE museo"

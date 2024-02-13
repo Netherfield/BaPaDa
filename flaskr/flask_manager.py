@@ -23,6 +23,10 @@ def import_autori():
 
 # RENDER HOMEPAGE -> __HOME__.html
 @app.route("/")
+def base():
+    return render_template("base.html")
+
+@app.route("/home")
 def homepage():
     return render_template("home.html")
 
@@ -31,8 +35,7 @@ def homepage():
 @app.route("/quadro/all")
 @app.route("/quadro/<author>")
 def show_all(author=None):
-    au = author
-    quadri = import_quadri(au)
+    quadri = import_quadri(author)
     autori = import_autori()
     return render_template("mostre.html", quadri=quadri, autori=autori)
 
@@ -72,8 +75,11 @@ def admin():
             cursor.execute('DELETE FROM quadri WHERE id=%s', (id,))
         conn.commit()
         return redirect(url_for('admin'))
-    return render_template('__ADMIN__.html')
+    return render_template('admin.html')
 
+@app.route('/informazioni')
+def info():
+    return render_template("informazioni.html")
 
 @app.route('/contatti')
 def contatti():
