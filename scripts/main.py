@@ -57,7 +57,7 @@ def main():
     parser.add_argument("--server", dest="server", action="store_true",
                         help="Establish connection to sql server at host [--host]")
     args = parser.parse_args()
-
+    
     if args.scrape:
         print("""You are trying to scrape the database again.
               It would take a lot of time so please reconsider.
