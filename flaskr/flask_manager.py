@@ -53,7 +53,7 @@ def quadro(id):
 #PAGINA ADMIN PER CRUD
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    conn = db.create_db_connection()
+    conn = db.create_db_connection("museo", "database/sqldb")
     cursor = conn.cursor()
 
     if request.method == 'POST':
