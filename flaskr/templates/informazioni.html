@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Informazioni | Museo della Mia Città</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stile.css') }}">
+</head>
+<header id="main-header">
+    <nav id="navbar">
+        <ul>
+         <li><a class="nav-link" href="/">Home</a></li>
+                <li><a class="nav-link" href="/quadro/all">Mostre</a></li>
+                <li><a class="nav-link" href="/quadro/all">Informazioni</a></li>
+                <li><a class="nav-link" href="/contatti">Contatti</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+<h1>quadro: {{data.Title}}</h1>
+<h1>autore: {{data.Author}}</h1>
+<h1>anno: {{data.Year}}</h1>
+<h1><a href="{{data.Link}}">CLICCA QUI PER VISUALIZZARE</a></h1>
+    <main>
+        <h2>Informazioni sul Museo</h2>
+        <p>Il Museo della Mia Città è un luogo dedicato alla conservazione e alla promozione del patrimonio culturale della nostra comunità. Scopri di più su di noi.</p>
+    </main>
+</body>
+</html>
