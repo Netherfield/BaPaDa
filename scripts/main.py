@@ -20,6 +20,12 @@
 import os
 import argparse
 
+import utils
+from utils.core import dbcheck
+
+import flaskr
+from flaskr.db_manager import manager
+
 
 from database.yikiparse import wikiscrape
 
@@ -36,7 +42,7 @@ def clean_env():
 def main():
     """
     Parses arguments
-        bapada [-h] [--scrape] [--no-db] [--test-db] [--update] [--link LINK] ...
+        bapada [-h] [--scrape] [--no-db] [--test-db] [--update] [--link LINK] [--host ip_address] ...
     Currently only --scrape and -h are implemented
     """
     # bapada [-h] [--scrape] [--no-db] [--test-db] [--update] [--link] ...
@@ -48,6 +54,8 @@ def main():
     # store_true means that if --scrape then scrape=True, if not included then scrape=False
     parser.add_argument("--scrape", "-s", dest="scrape", action="store_true",
                         help="scrape data from [--link] (this can take a while)")
+    parser.add_argument("--server", dest="server", action="store_true",
+                        help="Establish connection to sql server at host [--host]")
     args = parser.parse_args()
 
     if args.scrape:
@@ -57,9 +65,10 @@ def main():
     
     # if args.db:
     #   ...create db or don't idk
-    
-
-
+    if dbcheck:
+        ...
+    else:
+        manager(server=args.server)
 
     clean_env()
     

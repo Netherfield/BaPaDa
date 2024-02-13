@@ -1,5 +1,7 @@
 import mysql.connector
+import sqlite3
 import csv
+import os
 
 # database MySQL -> localhost, root, ''
 db_config = {
@@ -28,6 +30,23 @@ def create_database(name_db:str):
         cursor.close()
         connection.close()
     print("DB creato")
+
+def create_database_lite(name_db:str, dir_db:str):
+    path_db = os.path.join(dir_db, name_db)
+    if not os.path.exists(path_db):
+        try:
+            ...
+            connection = sqlite3.connect(path_db)
+            print("db created")
+        except Exception as e:
+            print(e)
+            print("Unable to create db")
+    else:
+        try:
+            ...
+        except Exception as e:
+            print(e)
+    """finire"""
 
 
 # CONNESSIONE AL DB
