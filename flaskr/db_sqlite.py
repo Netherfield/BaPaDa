@@ -1,5 +1,6 @@
 import sqlite3
 import csv
+import os
 
 # database MySQL -> localhost, root, ''
 db_config = {
@@ -8,18 +9,27 @@ db_config = {
     'password': ''
 }
 
-# SOSTITUIRE CON NOME DEL DATABASE
-db_name = "museo"
 
 # CONNESSIONE AL DB
-def create_db_connection():
-    conn = sqlite3.connect(db_name)
-    conn.row_factory = sqlite3.Row
-    return conn
+def create_db_connection(db_name, db_dir):
+    path_db = os.path.join(db_dir, db_name)
+    if not os.path.exists(path_db):
+        try:
+            connection = sqlite3.connect(path_db)
+            connection.row_factory = sqlite3.Row
+            print("db created")
+        except Exception as e:
+            print(e)
+            print("Unable to create db")
+    else:
+        try:
+            ...
+        except Exception as e:
+            print(e)
+    return connection
 
 # CREAZIONE TABELLA
-def create_table(name):
-    connection = create_db_connection()
+def create_table(connection, name):
     cursor = connection.cursor()
     create_table_query = f"""
         CREATE TABLE IF NOT EXISTS {name} (
@@ -35,8 +45,7 @@ def create_table(name):
     print("Tabella creata")
 
 # CARICARE DATI NEL CSV
-def load_data_from_csv(table_name, csv_file_path):
-    connection = create_db_connection()
+def load_data_from_csv(connection, table_name, csv_file_path):
     cursor = connection.cursor()
     with open(csv_file_path, 'r', encoding='utf-16') as file:
         next(file)  # Skip the header row

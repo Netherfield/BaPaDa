@@ -1,4 +1,4 @@
-from flask_manager import *
+import flaskr.db_sqlite as db
 
 NOME_DB = "museo"
 TABLE_NAME = "quadri"
@@ -12,24 +12,24 @@ def manager(server=False):
     # connect to db and create tables
         try:
             db.create_database(NOME_DB)
+            # db.create_db_connection()
         except Exception as e:
             print(e)
     else:
         try:
-            db.create_database_lite(NOME_DB, DIR_DB)
+            connection = db.create_db_connection(NOME_DB, DIR_DB)
+            print("missing?")
         except Exception as e:
+        
             print(e)
-    db.create_db_connection()
     try:
-        db.create_table(TABLE_NAME)
+        db.create_table(connection, TABLE_NAME)
     except Exception as e:
         print(e)
     try:
-        db.load_data_from_csv(TABLE_NAME, PATH)
+        db.load_data_from_csv(connection, TABLE_NAME, PATH)
     except Exception as e:
         print(e)
-
-
 
 manager()
 
