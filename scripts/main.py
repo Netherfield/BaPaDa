@@ -18,15 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 import os
+import subprocess
 import argparse
 
-import utils
 from utils.core import dbcheck
-
-import flaskr
 from flaskr.db_manager import manager
-
-
 from database.yikiparse import wikiscrape
 
 def clean_env():
@@ -70,11 +66,19 @@ def main():
     else:
         manager(server=args.server)
 
+    # launch flask
+    try:
+        # os.system("py flaskr\\run.py")
+        r = subprocess.Popen(["py", "flaskr\\run.py"])
+        print("Process returned code ", r)
+    except:
+        ...
+    # wait
+    # launch chrome/ff/edge
+    
     clean_env()
     
-# launch flask
-# wait
-# launch chrome/ff/edge
+
 if __name__ == "__main__":
     main()
 

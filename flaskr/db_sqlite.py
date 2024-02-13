@@ -23,7 +23,7 @@ def create_db_connection(db_name, db_dir):
             print("Unable to create db")
     else:
         try:
-            ...
+            connection = sqlite3.connect(path_db)
         except Exception as e:
             print(e)
     return connection
