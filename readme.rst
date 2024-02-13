@@ -11,7 +11,7 @@ Instructions
 ============
 start with the command:
 
-.. code-block:: powershell
+.. code-block:: console
     py bin/bapada
 
 
