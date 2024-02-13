@@ -1,7 +1,8 @@
 test-db/*
 logo/*
 docs/*.pdf
-database/tmp
+database/tmp/*
+!database/tmp/*.py
 **/.ideas
 **/.idea
 **/cruft

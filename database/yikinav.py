@@ -1,5 +1,8 @@
+
+import time
 import requests
 from bs4 import BeautifulSoup
+
 
 import yikidata
 
@@ -42,6 +45,7 @@ def get_works(gallery:BeautifulSoup):
     return author_works
 
 def wikidata_parser(work_codes:str):
+    start = time.perf_counter()
     work_data = yikidata.attributes(work_codes)
     results:list[dict] = work_data['results']['bindings']
     works_info = []
@@ -51,6 +55,8 @@ def wikidata_parser(work_codes:str):
         year = result['year']['value'][:4]
         link = result['imgref']['value']
         works_info += [[author, title, year, link]]
+    stop = time.perf_counter()
+    print(f"Query time for {author} was {stop - start:0.4f} seconds")
     return works_info
     
 
