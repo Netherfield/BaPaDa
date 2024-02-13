@@ -11,9 +11,9 @@ def manager():
         path = input("inserisci path del .csv: (DEF -> '../database/test.csv') ")
         if path.lower() == "def":
             path = DEF
-            db.create_server_connection()
+            # db.create_server_connection()
             try:
-                db.create_database(NOME_DB)
+                db.create_db_connection()
             except Exception as exc:
                 print(f"{exc}")
             db.create_db_connection()
