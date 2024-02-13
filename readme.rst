@@ -12,7 +12,7 @@ Instructions
 start with the command:
 
 .. code-block::
-    py bin/bapada
+        py bin/bapada
 
 
 Features
