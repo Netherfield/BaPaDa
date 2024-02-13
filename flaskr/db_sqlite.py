@@ -9,7 +9,7 @@ db_config = {
 }
 
 # SOSTITUIRE CON NOME DEL DATABASE
-db_name = "museo"
+db_name = "database/sqldb/museo"
 
 # CONNESSIONE AL DB
 def create_db_connection():
