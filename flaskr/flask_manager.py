@@ -1,5 +1,5 @@
 from flask import *
-import db
+import db_sqlite as db
 
 
 # CREAZIONE APP FLASK
@@ -37,7 +37,9 @@ def homepage():
 def show_all(author=None):
     quadri = import_quadri(author)
     autori = import_autori()
+    # print(quadri,autori)
     return render_template("mostre.html", quadri=quadri, autori=autori)
+
 
 # PAGINA INDIRIZZO Title
 @app.route('/quadro/id/<id>')
@@ -63,16 +65,16 @@ def admin():
         action = request.form['action']
 
         if action == 'Aggiungi':
-            cursor.execute('SELECT * FROM quadri WHERE Title = %s AND Author = %s', (name, author))
+            cursor.execute('SELECT * FROM quadri WHERE Title = ? AND Author = ?', (name, author))
             existing_Title = cursor.fetchone()
             if existing_Title is None:
-                cursor.execute('INSERT INTO quadri (Title, Author, Year, Link) VALUES (%s, %s, %s, %s)',
+                cursor.execute('INSERT INTO quadri (Title, Author, Year, Link) VALUES (?, ?, ?, ?)',
                                (name, author, year, link))
                 conn.commit()
             else:
                 print("Il Title esiste già nel database.")
         elif action == 'Rimuovi':
-            cursor.execute('DELETE FROM quadri WHERE id=%s', (id,))
+            cursor.execute('DELETE FROM quadri WHERE id=?', (id,))
         conn.commit()
         return redirect(url_for('admin'))
     return render_template('admin.html')
